@@ -1,0 +1,8 @@
+.main-bg {
+  height: 300px;
+  background-size: cover;
+}
+
+.container {
+  border: 1px solid black;
+}
