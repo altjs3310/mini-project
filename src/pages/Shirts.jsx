@@ -1,9 +1,17 @@
-import Cards from "../components/Card"
+import Cards from "../components/Cards"
 
-function Shirts() {
+function Shirts({shirtData}) {
   return (
     <>
-    <Cards/>
+    <div>
+      {
+        shirtData.map((data, i) => {
+          return(
+          <Cards data={data} key={i}/>
+          )
+        }) 
+      }
+    </div>
     </>
   )
 }

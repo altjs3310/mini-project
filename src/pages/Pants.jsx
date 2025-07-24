@@ -1,9 +1,17 @@
-import Cards from "../components/Card"
+import Cards from "../components/Cards"
 
-function Pants() {
+function Pants({pantsData}) {
   return (
     <>
-    <Cards/>
+    <div>
+      {
+        pantsData.map((data, i) => {
+          return(
+          <Cards data={data} key={i}/>
+          )
+        }) 
+      }
+    </div>
     </>
   )
 }

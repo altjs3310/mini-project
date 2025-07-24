@@ -1,9 +1,17 @@
-import Cards from "../components/Card"
+import Cards from "../components/Cards"
 
-function Outers() {
+function Outers({outerData}) {
   return (
     <>
-    <Cards/>
+    <div>
+      {
+        outerData.map((data, i) => {
+          return(
+          <Cards data={data} key={i}/>
+          )
+        }) 
+      }
+    </div>
     </>
   )
 }
