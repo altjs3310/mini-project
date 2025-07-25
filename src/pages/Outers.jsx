@@ -3,7 +3,12 @@ import Cards from "../components/Cards"
 function Outers({outerData}) {
   return (
     <>
-    <div>
+    <div style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      padding: '1rem'
+    }}>
       {
         outerData.map((data, i) => {
           return(

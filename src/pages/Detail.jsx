@@ -7,35 +7,38 @@ import { addItem } from "../redux/cartSlice";
 
 function Detail( {cardsData,shirtData,pantsData,outerData} ) {
   const { id } = useParams();
-  const index = Number(id);
   const [tabNumber, setTabNumber] = useState(0);
   const dispatch = useDispatch();
+  const allData = [...cardsData, ...shirtData, ...pantsData, ...outerData];
+  const item = allData.find(item => String(item.id) === id);
 
-  if(!cardsData[index]) {
+  if(!item) {
     return <div>로딩중...</div>;
   }
 
   return (
     <>
+    <div style={{background: 'rgba(194, 209, 138, 0.5)', font: 'bold'}}>
       <div style={{textAlign:'center'}}>  
-        <img src={`https://raw.githubusercontent.com/altjs3310/project_api/refs/heads/main/public${cardsData[id].img}`} alt="" width={'50%'}/> 
+        <img style={{marginTop: '10px', border: '1px solid black'}} src={`https://raw.githubusercontent.com/altjs3310/project_api/refs/heads/main/public${item.img}`} alt="" width={'25%'}/> 
       </div>
-      <div style={{padding: '30px', margin: '20px'}}>
-       <h2 style={{marginBottom: '20px'}}>{cardsData[id].name}</h2>
-        <h4 style={{marginBottom: '20px'}}>{cardsData[id].price}</h4>
+      <div style={{padding: '30px', margin: '20px', background: 'white', borderRadius: '5px'}}>
+       <h2 style={{marginBottom: '20px'}}>{item.name}</h2>
+        <h4 style={{marginBottom: '20px'}}>{item.price}원</h4>
         <button onClick={() => {
-          const item = {
-            id: id,
-            name: cardsData[id].name,
+          const cartItem = {
+            id: item.id,
+            name: item.name,
             count: 1,
-            price: cardsData[id].price
+            price: item.price,
+            img: item.img
           }
-          dispatch( addItem(item))
+          dispatch( addItem(cartItem))
           window.alert('장바구니에 추가되었습니다')
        }} style={{borderRadius: '5px', background: 'rgba(227, 230, 100, 0.3)'}}>장바구니에 담기</button>
       </div>
 
-      <Nav className="mt-4" variant="tabs" justify defaultActiveKey="link-0">
+      <Nav style={{outline:'1px solid black'}} className="mt-4" variant="tabs" justify defaultActiveKey="link-0">
         <Nav.Item>
           <Nav.Link eventKey="link-0" onClick={() => {
             setTabNumber(0);
@@ -53,7 +56,8 @@ function Detail( {cardsData,shirtData,pantsData,outerData} ) {
         </Nav.Item>   
       </Nav>   
           
-      <TabContent tabNumber={tabNumber}/>    
+      <TabContent tabNumber={tabNumber} info={item.info}/>
+    </div>      
     </>
     
   )

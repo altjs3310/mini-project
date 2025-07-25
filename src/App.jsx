@@ -67,7 +67,7 @@ function App() {
         <Route path='/shirts' element={<Shirts shirtData={shirtData}/>} />
         <Route path='/pants' element={<Pants pantsData={pantsData}/>} />
         <Route path='/outers' element={<Outers outerData={outerData}/>} />
-        <Route path='/cart' element={<Cart />} />
+        <Route path='/cart' element={<Cart/>} />
         <Route path='/detail/:id' element={<Detail 
         cardsData={cardsData}
         shirtData={shirtData}

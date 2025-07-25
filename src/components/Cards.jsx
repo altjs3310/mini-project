@@ -10,11 +10,11 @@ function Cards({ data }) {
   return (
     <>
   
-
-      <Card key={data.id} style={{ width: '18em', margin: '1em' }} onClick={() => {
+      <div>
+      <Card key={data.id} style={{ width: '15em', margin: '5em' }} onClick={() => {
       navigate('/detail/' + data.id)
       }}>
-      <CardImg variant="top" src={`https://raw.githubusercontent.com/altjs3310/project_api/refs/heads/main/public${data.img}`} />
+      <CardImg variant="top" src={`https://raw.githubusercontent.com/altjs3310/project_api/refs/heads/main/public${data.img}`} width={'20%'}/>
       <CardBody>
         <CardTitle >{data.name}</CardTitle>
         <CardText>{data.price}원</CardText>
@@ -31,8 +31,7 @@ function Cards({ data }) {
         }}>장바구니에 담기</Button>
       </CardBody>
       </Card>
-  
-
+      </div>
     
     </>
   )

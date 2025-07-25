@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-function TabContent({tabNumber}) {
+function TabContent({tabNumber, info}) {
   const [fade, setFade] = useState('');
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function TabContent({tabNumber}) {
     <>
       <div className={`start ${fade}`}>
         {
-          [<div>상세정보</div>, <div>리뷰</div>, <div>교환 및 문의사항</div>] [tabNumber]
+          [<div style={{height: '800px', textAlign: 'center'}}>{info}</div>, <div style={{height: '800px', textAlign: 'center'}}>리뷰</div>, <div style={{height: '800px', textAlign: 'center'}}>교환 및 문의사항</div>] [tabNumber]
         }
       </div>
         
