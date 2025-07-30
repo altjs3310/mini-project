@@ -8,12 +8,16 @@ import Cart from './pages/Cart'
 import Detail from './pages/Detail'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { setWatched } from './redux/watchedSlice'
+import WatchedProduct from './components/WatchedProduct'
 
 function App() {
   const [cardsData, setCardsData] = useState([]);
   const [shirtData, setShirtData] = useState([]);
   const [pantsData, setPantsData] = useState([]);
   const [outerData, setOuterData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
   axios.get("https://raw.githubusercontent.com/altjs3310/project_api/refs/heads/main/clothes.json")
@@ -55,11 +59,27 @@ function App() {
     })
   }, [])
 
+  useEffect(() => {
+    let watched = localStorage.getItem('watched');
+    watched = JSON.parse(watched);
+    if(watched === null){
+      localStorage.setItem('watched', JSON.stringify([]));
+      dispatch(setWatched([]))
+    } else {
+      dispatch(setWatched(watched))
+    }
+  }, [])
+
 
   return (
     <>
        <Header />
       <div style={{paddingTop: '56px'}}>
+       <WatchedProduct cardsData={ 
+        [...cardsData,
+        ...shirtData,
+        ...pantsData,
+        ...outerData]} /> 
    
 
       <Routes> 

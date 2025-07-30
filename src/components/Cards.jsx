@@ -2,18 +2,24 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "react-bootstrap"
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cartSlice";
+import './cards.css';
 
 function Cards({ data }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const cardClick = () => {
+    const clickCounts = JSON.parse(localStorage.getItem("clickCounts")) || {};
+    clickCounts[data.id] = (clickCounts[data.id] || 0) + 1;
+    localStorage.setItem("clickCounts", JSON.stringify(clickCounts));
+    navigate('/detail/' + data.id)
+  }
+
   return (
     <>
   
       <div>
-      <Card key={data.id} style={{ width: '15em', margin: '5em' }} onClick={() => {
-      navigate('/detail/' + data.id)
-      }}>
+      <Card className="cards" key={data.id} style={{ width: '15em', margin: '5em' }} onClick={cardClick}>
       <CardImg variant="top" src={`https://raw.githubusercontent.com/altjs3310/project_api/refs/heads/main/public${data.img}`} width={'20%'}/>
       <CardBody>
         <CardTitle >{data.name}</CardTitle>

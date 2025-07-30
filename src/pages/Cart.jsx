@@ -7,20 +7,21 @@ function Cart() {
   const dispatch = useDispatch();
 
   return (
+    <div style={{height:'1000px',marginLeft: '100px', marginRight: '100px',paddingTop: '20px'}}>
     <Table>
-      <thead>
-        <tr style={{textAlign:'center'}}>
-          <th>상품명</th>
-          <th>수량</th>
-          <th>가격</th>
-          <th></th>
+      <thead style={{textAlign:'center', fontSize: 'large', background: 'black', borderBottom: '2px solid black'}}>
+        <tr>
+          <th style={{background: 'rgba(236, 202, 158, 0.5)'}}>상품명</th>
+          <th style={{background: 'rgba(236, 202, 158, 0.5)'}}>수량</th>
+          <th style={{background: 'rgba(236, 202, 158, 0.5)'}}>가격</th>
+          <th style={{background: 'rgba(236, 202, 158, 0.5)'}}></th>
         </tr>
       </thead>
       <tbody>
         {
           cart.map((item, i)=>{
             return (
-              <tr key={i} style={{textAlign:'center'}}>
+              <tr key={i} style={{textAlign:'center', fontSize:'large'}}>
                 <td>{item.name}</td>
                 <td>{item.count} <button style={{marginLeft:'10px'}} onClick={() => {
                   dispatch(addCount(i))
@@ -37,6 +38,7 @@ function Cart() {
         }
       </tbody>
     </Table>
+    </div>
   )
 }
 

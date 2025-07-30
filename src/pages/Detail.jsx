@@ -1,20 +1,35 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Nav, NavItem } from "react-bootstrap";
 import TabContent from "../components/TabContent";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cartSlice";
+import { setWatched } from "../redux/watchedSlice";
 
 function Detail( {cardsData,shirtData,pantsData,outerData} ) {
   const { id } = useParams();
   const [tabNumber, setTabNumber] = useState(0);
   const dispatch = useDispatch();
   const allData = [...cardsData, ...shirtData, ...pantsData, ...outerData];
-  const item = allData.find(item => String(item.id) === id);
 
-  if(!item) {
+  if(allData.length === 0) {
     return <div>로딩중...</div>;
   }
+  const item = allData.find(item => String(item.id) === id);
+ 
+  useEffect(() => {
+  let watched = localStorage.getItem('watched');
+  watched = JSON.parse(watched);
+
+  if(watched.length === 3 && !watched.includes(id))
+    watched.pop();
+  watched = [id, ...watched]
+
+  watched = new Set(watched);
+  watched = Array.from(watched);
+  localStorage.setItem('watched', JSON.stringify(watched));
+  dispatch( setWatched(watched))
+  }, [])
 
   return (
     <>

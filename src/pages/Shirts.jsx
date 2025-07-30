@@ -4,18 +4,26 @@ function Shirts({shirtData}) {
   return (
     <>
     <div style={{
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      padding: '1rem'
+      height: '1500px',
+      background: 'rgba(24, 67, 99, 0.5)',
+      textAlign: 'center',
+      paddingTop: '50px'
     }}>
-      {
-        shirtData.map((data, i) => {
-          return(
-          <Cards data={data} key={i}/>
-          )
-        }) 
-      }
+      <h1 style={{borderBottom: '1px solid black'}}>SHIRTS</h1>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        padding: '1rem',
+      }}>
+        {
+          shirtData.map((data, i) => {
+            return(
+            <Cards data={data} key={i}/>
+            )
+          }) 
+        }
+      </div>
     </div>
     </>
   )
