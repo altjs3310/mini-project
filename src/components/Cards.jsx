@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "react-bootstrap"
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cartSlice";
-import './cards.css';
+import './Cards.css';
 
 function Cards({ data }) {
   const navigate = useNavigate();
