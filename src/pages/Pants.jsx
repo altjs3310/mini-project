@@ -4,7 +4,7 @@ function Pants({pantsData}) {
   return (
     <>
     <div style={{
-      height: '1500px',
+      height: 'auto',
       background: 'rgba(24, 67, 99, 0.5)',
       textAlign: 'center',
       paddingTop: '50px'

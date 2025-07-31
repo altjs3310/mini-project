@@ -11,6 +11,8 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { setWatched } from './redux/watchedSlice'
 import WatchedProduct from './components/WatchedProduct'
+import Login from './pages/Login'
+import NewMember from './pages/NewMember'
 
 function App() {
   const [cardsData, setCardsData] = useState([]);
@@ -93,6 +95,8 @@ function App() {
         shirtData={shirtData}
         pantsData={pantsData}
         outerData={outerData}/>} />
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/newMember' element={<NewMember/>}/>
       </Routes>
       </div>
     </>

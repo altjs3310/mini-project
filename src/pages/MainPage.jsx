@@ -36,7 +36,7 @@ function MainPage({ cardsData }) {
       marginRight: '100px',
       background: 'rgba(24, 67, 99, 0.5)',
       border:'2px solid rgba(0, 0, 0, 0.5)',
-      height: '3000px',
+      height: 'auto',
       }}>
       <div className="Mainpage main-bg" style={{
         backgroundImage:`url(${bgList[bgIndex]})`, 
@@ -53,7 +53,9 @@ function MainPage({ cardsData }) {
         textAlign: 'center',
         padding: '10px',
         fontWeight: 'bold',
-        background: 'rgba(12, 12, 34, 0.81)'
+        background: 'rgba(12, 12, 59, 0.49)',
+        marginTop: '-20px',
+        borderBottom:'1px solid white'
         }}>
         <p style={{
           marginLeft: '30px',
@@ -61,7 +63,7 @@ function MainPage({ cardsData }) {
           marginTop: '5px', 
           color: 'yellow'}}>★ BEST 상품 ★</p>
       </div>
-      <div className="card-grid">
+      <div style={{marginTop:'-30px'}} className="card-grid">
         {
           sortedCards.map((data, i) => {
              return(

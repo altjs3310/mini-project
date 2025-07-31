@@ -6,8 +6,13 @@ function Cart() {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch();
 
+  let totalPrice = 0;
+  cart.forEach(item => {
+    totalPrice += item.price * item.count;
+  });
+
   return (
-    <div style={{height:'1000px',marginLeft: '100px', marginRight: '100px',paddingTop: '20px'}}>
+    <div style={{height:'auto',marginLeft: '100px', marginRight: '100px',paddingTop: '20px'}}>
     <Table>
       <thead style={{textAlign:'center', fontSize: 'large', background: 'black', borderBottom: '2px solid black'}}>
         <tr>
@@ -25,19 +30,40 @@ function Cart() {
                 <td>{item.name}</td>
                 <td>{item.count} <button style={{marginLeft:'10px'}} onClick={() => {
                   dispatch(addCount(i))
-                }}>+</button><button style={{marginLeft:'10px'}} onClick={() => {
-                  dispatch(minusCount(i))
+                }}>+</button>
+                <button style={{marginLeft:'10px'}} onClick={() => {
+                  if(item.count === 1) {
+                    const result = confirm('정말 삭제하시겠습니까?');
+                    if(result) {
+                    dispatch(minusCount(i));  
+                    dispatch(removeItem(i));
+                    } 
+                  } else {
+                    dispatch(minusCount(i));
+                  }
                 }}>-</button></td>
                 <td>{item.price * item.count}원</td>
                 <td><button style={{color: 'red'}} onClick={() => {
-                  dispatch(removeItem(i))
+                  const result = confirm('정말 삭제하시겠습니까?');
+                  if(result) {
+                    dispatch(removeItem(i))
+                  } else {
+                  }
                 }}>x</button></td>
-              </tr>  
+              </tr> 
             )
           })
         }
       </tbody>
     </Table>
+    <div style={{
+      borderTop:'1px solid rgba(0,0,0,0.1)',
+      marginTop:'-10px'
+    }}>
+    <h4 style={{
+      fontWeight: 'bold',
+      marginTop:'15px'
+    }}>총합 : {totalPrice.toLocaleString()}원</h4></div>
     </div>
   )
 }
