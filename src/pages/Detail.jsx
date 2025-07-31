@@ -33,7 +33,7 @@ function Detail( {cardsData,shirtData,pantsData,outerData} ) {
 
   return (
     <>
-    <div style={{background: 'rgba(194, 209, 138, 0.5)', font: 'bold'}}>
+    <div style={{background: 'rgba(14, 9, 82, 0.1)', font: 'bold'}}>
       <div style={{textAlign:'center'}}>  
         <img style={{marginTop: '10px', border: '1px solid black'}} src={`https://raw.githubusercontent.com/altjs3310/project_api/refs/heads/main/public${item.img}`} alt="" width={'25%'}/> 
       </div>
