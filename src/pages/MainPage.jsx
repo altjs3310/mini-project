@@ -8,6 +8,7 @@ import './MainPage.css';
 function MainPage({ cardsData }) {
   const bgList = [bg1, bg2, bg3];
   const [bgIndex, setBgIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -31,6 +32,15 @@ function MainPage({ cardsData }) {
 
   return (
     <>
+    <div style={{ 
+      border:'1px solid black',
+      marginTop:'20px', 
+      height:'85px',
+      marginLeft: '100px', 
+      marginRight: '100px',
+      background: 'rgba(21, 20, 27, 1)',
+      borderBottom:'1px solid white'
+      }}>aa</div>
     <div style={{
       marginLeft: '100px', 
       marginRight: '100px',
@@ -43,9 +53,35 @@ function MainPage({ cardsData }) {
         height:'500px',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        marginBottom: '20px'
-        }}>
-          
+        marginBottom: '20px',
+        borderBottom:'1px solid black'
+      }}>
+        {showPopup && (
+          <div style={{
+            border:'1px solid black', 
+            zIndex:'9999', 
+            width:'500px',
+            height:'300px',
+            marginLeft:'200px',
+            background:'white'
+          }}>
+            <div style={{marginTop:'10px', padding:'10px'}}>
+            <h2 style={{fontWeight:'bold'}}>오픈 세일 진행중</h2>
+            <h3>7만원이상 구매시 배송비 무료</h3>
+            <h3>10만원이상 구매시 5% 할인쿠폰 지급</h3>
+            <h3>15만원이상 구매시 10% 할인쿠폰 지급</h3>
+            </div>
+            <button onClick={() => setShowPopup(false)} 
+            style={{
+            marginTop:'30px', 
+            marginLeft:'85%',
+            padding:'5px 10px',
+            border:'none',
+            background:'#333',
+            color:'white',
+            }}>닫기</button>
+          </div> 
+        )}    
       </div>
       <div style={{
         fontSize: '25px', 
@@ -53,7 +89,8 @@ function MainPage({ cardsData }) {
         padding: '10px',
         fontWeight: 'bold',
         marginTop: '-20px',
-        borderBottom:'1px solid white'
+        borderBottom:'1px solid white',
+        borderTop:'1px solid white'
         }}>
         <p style={{
           marginLeft: '30px',
@@ -71,7 +108,7 @@ function MainPage({ cardsData }) {
           }) 
         }
       </div>   
-    </div>  
+    </div>
     </>
   )
 }
