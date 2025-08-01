@@ -5,5 +5,5 @@
 
 .cards:hover {
   transform: translateY(-10px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 15px rgba(226, 217, 217, 0.651);
 }

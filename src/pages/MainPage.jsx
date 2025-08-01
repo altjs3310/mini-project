@@ -34,7 +34,7 @@ function MainPage({ cardsData }) {
     <div style={{
       marginLeft: '100px', 
       marginRight: '100px',
-      background: 'rgba(24, 67, 99, 0.5)',
+      background: 'rgba(21, 20, 27, 1)',
       border:'2px solid rgba(0, 0, 0, 0.5)',
       height: 'auto',
       }}>
@@ -49,11 +49,9 @@ function MainPage({ cardsData }) {
       </div>
       <div style={{
         fontSize: '25px', 
-        borderRadius: '5px',
         textAlign: 'center',
         padding: '10px',
         fontWeight: 'bold',
-        background: 'rgba(12, 12, 59, 0.49)',
         marginTop: '-20px',
         borderBottom:'1px solid white'
         }}>
@@ -61,7 +59,8 @@ function MainPage({ cardsData }) {
           marginLeft: '30px',
           marginRight: '30px', 
           marginTop: '5px', 
-          color: 'yellow'}}>★ BEST 상품 ★</p>
+          color: 'yellow',
+          fontFamily:'Playfair Display'}}>★ B E S T 상품 ★</p>
       </div>
       <div style={{marginTop:'-30px'}} className="card-grid">
         {

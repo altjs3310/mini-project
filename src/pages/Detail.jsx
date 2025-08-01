@@ -1,6 +1,6 @@
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
-import { Nav, NavItem } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 import TabContent from "../components/TabContent";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cartSlice";
